@@ -10,7 +10,6 @@ setup(
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type='text/markdown',
     keywords=["qufi", "qube fidel", "qube to fidel", "qube to geez", "qube script", "python", "alphabet", "amharic", "oromo", "afan oromo", "latters", "latters convertors"],
-    classifiers=['Programming Language :: Python :: 3.8'],
     version=__version__,
     license="MIT"    
 )
