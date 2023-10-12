@@ -8,37 +8,28 @@ class QubeFidel:
     def __init__(self):
         self.latter = latter_dict()
 
-    def convert(self, text: str, *, reverse: bool = False) -> str:
+    def convert(self, text: str) -> str:
         new_text = text
         for flu in filter_unchangeable_words(new_text):
             new_text = new_text.replace(flu, "``")
-        if reverse:
-        	new_text = self.__reverse(new_text)
-        
-        else: new_text = self.__direct(new_text)
- 			
+        new_text = self.__direct(new_text)
         for flu in filter_unchangeable_words(text).values():
             new_text = new_text.replace('``', flu, 1)
-        
-        
+
         new_text = self.__replace_punc(new_text)
         return new_text
-        
-        
+
     def __replace_vowels(self, text):
-    	
         new_text = text
         for vowel in LONG_VOWELS:
             new_text = new_text.replace(f"'{vowel}", self.latter[vowel]) \
-                              .replace(f"'{vowel[0]}", self.latter[vowel[0]])\
-            				  .replace(vowel, self.latter[vowel]) \
-                              .replace(vowel[0], self.latter[vowel[0]]) 
+                               .replace(f"'{vowel[0]}", self.latter[vowel[0]])\
+                               .replace(vowel, self.latter[vowel]) \
+                               .replace(vowel[0], self.latter[vowel[0]])
                               
         return new_text
         
-        
     def __replace_punc(self, text):
-        
         import re 
         dot_regex = re.findall(r"((\w+\.\w+(\.\w+)*\.?)|(\.\.(\.)*))", text) # ምህጻረ-ቃለት ወይም ነጠብጣብ መለያ
         new_text = text
@@ -53,36 +44,16 @@ class QubeFidel:
         return new_text
    
     def __direct(self, text):
-		
-	    new_text = text.lower()
-	
-	    for ws in word_spliter(new_text):
-	        new_text = new_text.replace(ws, self.latter.get(ws, ""), 1)
-	
-	    new_text = self.__replace_vowels(new_text)
-	    for k, v in self.latter.items():
-	        new_text = new_text.replace(k, v)
-	                   
-	    return new_text
-		
-    def __reverse(self, text):
-    	
-	   
-	    nw_text = text
-	    r_dict = {v: k for k, v in self.latter.items()}
-	   
-	    for i in range(0, len(nw_text)):    
-		    for j in range(4, -1, -1):
-		        	try:
-		        		k=text[i: j+i].strip()
-		        	except:
-		        		continue
-		        	
-			        if r_dict.get(k):		
-		        	    nw_text = nw_text.replace(k, r_dict[k], 1)
-			            break
-	    return nw_text
-	       			
-   
+        new_text = text.lower()
+
+        for ws in word_spliter(new_text):
+            new_text = new_text.replace(ws, self.latter.get(ws, ""), 1)
+
+        new_text = self.__replace_vowels(new_text)
+        for k, v in self.latter.items():
+            new_text = new_text.replace(k, v)
+
+        return new_text
+
          
-__all__ = ("QubeFidel", "__version__")        
+__all__ = ("QubeFidel", "__version__")
