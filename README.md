@@ -1,5 +1,5 @@
 
-# እንኳን በደህና መጡ 
+# እንኳን በደህና መጡ
 
 ## መግቢያ 
 
@@ -19,7 +19,8 @@ $ pip install qufi-script
 
 ### አሁን አንሞክር
 
-```python
+```
+python
 
 from qufi import QubeFidel 
 
@@ -128,7 +129,8 @@ Fakkeenya jechoota gabaabaa fi dheeraa muraasa
 |ol-|ኦል-|
 |-oota|ኦ፞ተ|
 
-```python 
+```
+python 
 from qufi import QubeFidel 
 
 qube = QubeFidel()
@@ -152,7 +154,8 @@ print(qube.convert("Gaariin ijoollee fe'e."))
 
 Jechoota akka hin jijjiiramne gochuuf, jechicha `` keessa galchuun akka hin jijjiiramne gochuun ni danda'ama.
 
-```python
+```
+python
 from qufi import QubeFidel
 
 qube = QubeFidel()
